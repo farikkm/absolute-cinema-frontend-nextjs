@@ -1,0 +1,21 @@
+ .wrapper {
+  max-width: 280px;
+  border: 1px solid #fff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+  padding-right: 15px;
+}
+
+.wrapper > input {
+  width: 100%;
+  padding: 18px 15px;
+  border: none;
+  background: none;
+}
+
+.wrapper > input:focus {
+  outline: none;
+}

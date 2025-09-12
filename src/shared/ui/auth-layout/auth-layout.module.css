@@ -1,0 +1,130 @@
+.wrapper {
+	min-height: 100vh;
+
+	background: linear-gradient(248.7deg, #030a1b 68.64%, #9747ff 206.69%);
+
+	display: flex;
+}
+
+.container {
+	max-width: 1280px;
+	margin: 0 auto;
+
+	padding: 30px 15px;
+
+	display: flex;
+	align-items: center;
+	gap: 70px;
+}
+
+.left {
+	min-width: 300px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.right {
+	display: none;
+}
+
+.right > img {
+	height: 500px;
+	max-width: 100%;
+}
+
+.title {
+	font-size: 72px;
+	margin-bottom: 26px;
+}
+
+.links {
+	display: flex;
+	justify-content: space-between;
+	gap: 100px;
+	padding: 0 20px;
+
+	margin-bottom: 86px;
+}
+
+.links > * {
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 24px;
+}
+
+.link__active {
+	position: relative;
+}
+
+.link__active::after {
+	content: "";
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	background: #228ee5;
+	filter: blur(2px);
+}
+
+.inputs {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 50px;
+
+	width: 100%;
+
+	margin-bottom: 25px;
+}
+
+.inputs > * {
+	width: 100%;
+}
+
+.forgot__password {
+	display: block;
+	margin-bottom: 25px;
+}
+
+.auth__button {
+    
+}
+
+@media (min-width: 1024px) {
+	.inputs {
+		width: 80%;
+	}
+	.right {
+		display: block;
+	}
+}
+
+/* ================== Successful Login  ================== */
+.successful-login.wrapper {
+	width: 100%;
+	height: 100vh;
+	background: linear-gradient(248.7deg, #030a1b 68.64%, #9747ff 206.69%);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.successful-login > img {
+	margin-bottom: 40px;
+	font-size: 24px;
+}
+
+.successful-login > span {
+	margin-bottom: 70px;
+	font-size: 48px;
+}
+
+.successful-login > span,
+.successful-login > h1 {
+	text-align: center;
+}

@@ -1,0 +1,7 @@
+.button {
+  padding: 15px 36px;
+  background-color: var(--blue-color);
+  border-radius: 16px;
+  text-transform: uppercase;
+  border: 2px solid #ffffff67;
+}
