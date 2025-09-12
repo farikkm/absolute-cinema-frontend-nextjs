@@ -53,11 +53,12 @@
 	color: #fff;
 	font-size: 24px;
 }
-.links > ._active {
+
+.link__active {
 	position: relative;
 }
 
-.links > ._active::after {
+.link__active::after {
 	content: "";
 	position: absolute;
 	bottom: -5px;
@@ -83,7 +84,7 @@
 	width: 100%;
 }
 
-.forgot-password {
+.forgot__password {
 	display: block;
 	margin-bottom: 25px;
 }

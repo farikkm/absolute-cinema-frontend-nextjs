@@ -4,21 +4,21 @@ export default function Page() {
   return (
       <div id="login-page" className={styles.wrapper}>
         <div className={styles.container}>
-          <div className="left">
-            <h1 className="title">Welcome</h1>
-            <div className="links">
-              <a data-link href="/login" className="_active">
+          <div className={styles.left}>
+            <h1 className={styles.title}>Welcome</h1>
+            <div className={styles.links}>
+              <a data-link href="/login" className={styles.link__active}>
                 Login
               </a>
               <a data-link href="/register">
                 Signup
               </a>
             </div>
-            <div className="inputs"></div>
-            <span className="forgot-password">Forgot Password?</span>
-            <div className="button"></div>
+            <div className={styles.inputs}></div>
+            <span className={styles.forgot__password}>Forgot Password?</span>
+            <div className={styles.button}></div>
           </div>
-          <div className="right">
+          <div className={styles.right}>
             <img src="/images/auth/avatar.png" alt="" />
           </div>
         </div>
