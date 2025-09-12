@@ -1,0 +1,134 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--blue-color: #228ee5;
+}
+
+/* ===================== Base Styles ===================== */
+
+html,
+body {
+	background-color: #030a1b;
+}
+
+body {
+	font-family: "Lato";
+	font-weight: 500;
+	font-style: normal;
+
+	color: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+input {
+	color: #fff;
+}
+
+button {
+	color: #fff;
+}
+
+ul {
+	list-style-type: none;
+}
+
+/* ===================== Header ===================== */
+.header {
+	position: absolute;
+	top: 35px;
+	left: 50%;
+
+	width: 100%;
+	max-width: 1230px;
+	transform: translate(-50%, 0);
+
+	padding: 0 15px;
+}
+
+.header__wrapper {
+	display: flex;
+	align-items: center;
+
+	border: 0.5px solid #cfcfcf;
+	border-radius: 20px;
+
+	backdrop-filter: blur(8px);
+	background-color: #333333ab;
+
+	padding: 10px 15px 10px 10px;
+}
+
+.header__menu {
+	margin-left: 55px;
+}
+
+.header__list {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
+
+.header__menu {
+	flex: 1;
+}
+
+.header__logo {
+	width: 45px;
+	height: 45px;
+}
+
+.header__logo > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.header__actions {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+}
+
+.header__actions > * {
+	font-size: 20px;
+	color: #fff;
+}
+
+/* ==================== User Input ==================== */
+.input-wrapper {
+	max-width: 280px;
+	border: 1px solid #fff;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 16px;
+	padding-right: 15px;
+}
+
+.input-wrapper > input {
+	width: 100%;
+	padding: 18px 15px;
+	border: none;
+	background: none;
+}
+
+.input-wrapper > input:focus {
+	outline: none;
+}
+
+#auth-btn {
+	padding: 15px 36px;
+	background-color: var(--blue-color);
+	border-radius: 16px;
+	text-transform: uppercase;
+	border: 2px solid #ffffff67;
+}
