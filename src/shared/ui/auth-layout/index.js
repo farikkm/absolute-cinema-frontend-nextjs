@@ -1,21 +1,26 @@
+import Link from "next/link";
 import AuthButton from "../auth-button";
 import styles from "./auth-layout.module.css";
+import { useRouter } from "next/router";
 
 export default function AuthLayout({ children, buttonText }) {
+  const router = useRouter();
+  const pathname = router.asPath;
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.left}>
           <h1 className={styles.title}>Welcome</h1>
           <div className={styles.links}>
-            <a data-link href="/login" className={styles.link__active}>
+            <Link href="/login" className={pathname === "/login" ? styles.link__active : ""}>
               Login
-            </a>
-            <a data-link href="/register">
+            </Link>
+            <Link href="/register">
               Signup
-            </a>
+            </Link>
           </div>
-          <form>
+          <form className={styles.form}>
             <div className={styles.inputs}>{children}</div>
             <span className={styles.forgot__password}>Forgot Password?</span>
             <div className={styles.button}>

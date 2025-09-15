@@ -1,5 +1,5 @@
  .wrapper {
-  max-width: 280px;
+  width: 240px;
   border: 1px solid #fff;
 
   display: flex;
