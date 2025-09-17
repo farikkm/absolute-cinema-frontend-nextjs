@@ -13,17 +13,17 @@ export default function Page() {
         type="email"
         id="email"
         placeholder="Email"
-        iconClass="fa-solid fa-eye-slash"
+        iconClass="fa-solid fa-envelope"
       />
       <AuthInput
         id="password"
         placeholder="Password"
-        iconClass="fa-solid fa-user"
+        iconClass="fa-solid fa-eye-slash"
       />
       <AuthInput
         id="repeat-password"
         placeholder="Repeat Password"
-        iconClass="fa-solid fa-user"
+        iconClass="fa-solid fa-eye-slash"
       />
       <AuthInput
         id="username"

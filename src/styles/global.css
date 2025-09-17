@@ -1,136 +1,202 @@
 @import url("./fonts.css");
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-	--blue-color: #228ee5;
+  --blue-color: #228ee5;
 }
 
 /* ===================== Base Styles ===================== */
 
 html,
 body {
-	background-color: #030a1b;
+  background-color: #030a1b;
 }
 
 body {
-	font-family: "Lato";
-	font-weight: 500;
-	font-style: normal;
+ min-height: 100vh;	
 
-	color: #fff;
+  font-family: "Lato";
+  font-weight: 500;
+  font-style: normal;
+
+  color: #fff;
 }
 
 a {
-	text-decoration: none;
-	color: #fff;
+  text-decoration: none;
+  color: #fff;
 }
 
 input {
-	color: #fff;
+  color: #fff;
 }
 
 button {
-	color: #fff;
+  color: #fff;
 }
 
 ul {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 /* ===================== Header ===================== */
+
 .header {
-	position: absolute;
-	top: 35px;
-	left: 50%;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  z-index: 1000;
 
-	width: 100%;
-	max-width: 1230px;
-	transform: translate(-50%, 0);
+  width: 100%;
+  max-width: 1230px;
+  transform: translate(-50%, 0);
 
-	padding: 0 15px;
+  padding: 0 15px;
 }
 
 .header__wrapper {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 
-	border: 0.5px solid #cfcfcf;
-	border-radius: 20px;
+  border: 0.5px solid #cfcfcf;
+  border-radius: 20px;
 
-	backdrop-filter: blur(8px);
-	background-color: #333333ab;
+  backdrop-filter: blur(8px);
+  background-color: #333333ab;
 
-	padding: 10px 15px 10px 10px;
-}
-
-.header__menu {
-	margin-left: 55px;
-}
-
-.header__list {
-	display: flex;
-	align-items: center;
-	gap: 24px;
-}
-
-.header__menu {
-	flex: 1;
+  padding: 10px 15px 10px 10px;
 }
 
 .header__logo {
-	width: 45px;
-	height: 45px;
+  width: 50px;
+  height: 50px;
+}
+.header__logo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.header__logo > img {
+.header__menu {
+  margin-left: auto;
+}
+
+.header__list {
+  display: none;
+}
+
+.header__list {
+	left: -100%; top: 0;
+	z-index: -1;
+
+	transition: all .3s linear;
+}
+
+.header__list._active {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+
+	position: absolute;
+	left: 0; top: 0;
+
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
+	height: 100vh;
+
+	background-color: #030a1b;
+}
+
+.header__list._active > * {
+	font-size: 40px;
 }
 
 .header__actions {
-	display: flex;
-	align-items: center;
-	gap: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__button {
+  margin-right: 20px;
+  font-size: 24px;
 }
 
 .header__actions > * {
-	font-size: 20px;
-	color: #fff;
+  font-size: 24px;
+  color: #fff;
+}
+
+@media (min-width: 600px) {
+  .header__wrapper {
+    padding: 10px 15px 10px 10px;
+  }
+  .header__menu {
+    margin-left: 55px;
+  }
+
+  .header__list {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .header__menu {
+    flex: 1;
+  }
+
+  .header__logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header__button {
+    display: none;
+  }
+
+  .header__actions {
+    gap: 32px;
+  }
+
+  .header__actions > * {
+    font-size: 20px;
+    color: #fff;
+  }
 }
 
 /* ==================== User Input ==================== */
 .input-wrapper {
-	max-width: 280px;
-	border: 1px solid #fff;
+  max-width: 280px;
+  border: 1px solid #fff;
 
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-radius: 16px;
-	padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+  padding-right: 15px;
 }
 
 .input-wrapper > input {
-	width: 100%;
-	padding: 18px 15px;
-	border: none;
-	background: none;
+  width: 100%;
+  padding: 18px 15px;
+  border: none;
+  background: none;
 }
 
 .input-wrapper > input:focus {
-	outline: none;
+  outline: none;
 }
 
 #auth-btn {
-	padding: 15px 36px;
-	background-color: var(--blue-color);
-	border-radius: 16px;
-	text-transform: uppercase;
-	border: 2px solid #ffffff67;
+  padding: 15px 36px;
+  background-color: var(--blue-color);
+  border-radius: 16px;
+  text-transform: uppercase;
+  border: 2px solid #ffffff67;
 }

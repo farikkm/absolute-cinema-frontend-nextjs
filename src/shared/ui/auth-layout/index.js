@@ -16,7 +16,7 @@ export default function AuthLayout({ children, buttonText }) {
             <Link href="/login" className={pathname === "/login" ? styles.link__active : ""}>
               Login
             </Link>
-            <Link href="/register">
+            <Link href="/register" className={pathname === "/register" ? styles.link__active : ""}>
               Signup
             </Link>
           </div>
