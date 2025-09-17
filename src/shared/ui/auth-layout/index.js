@@ -3,7 +3,7 @@ import AuthButton from "../auth-button";
 import styles from "./auth-layout.module.css";
 import { useRouter } from "next/router";
 
-export default function AuthLayout({ children, buttonText }) {
+export default function AuthLayout({ children }) {
   const router = useRouter();
   const pathname = router.asPath;
 
@@ -20,13 +20,7 @@ export default function AuthLayout({ children, buttonText }) {
               Signup
             </Link>
           </div>
-          <form className={styles.form}>
-            <div className={styles.inputs}>{children}</div>
-            <span className={styles.forgot__password}>Forgot Password?</span>
-            <div className={styles.button}>
-              <AuthButton>{buttonText}</AuthButton>
-            </div>
-          </form>
+          {children}
         </div>
         <div className={styles.right}>
           <img src="/images/auth/avatar.png" alt="" />
