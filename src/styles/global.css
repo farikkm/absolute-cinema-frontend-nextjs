@@ -7,6 +7,10 @@
 }
 
 :root {
+  --heading-1: 72px;
+  --heading-2: 48px;
+  --heading-3: 32px;
+
   --blue-color: #228ee5;
 }
 
@@ -42,6 +46,24 @@ button {
 
 ul {
   list-style-type: none;
+}
+
+/* ===================== Main Classes ===================== */
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.6s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===================== Header ===================== */

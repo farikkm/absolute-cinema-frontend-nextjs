@@ -4,15 +4,33 @@ import AuthLayout from "@/shared/ui/auth-layout";
 import AuthInput from "@/shared/ui/auth-input";
 import AuthButton from "@/shared/ui/auth-button";
 import { useForm } from "react-hook-form";
+import { login } from "@/shared/hooks/useAuth";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Page() {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const router = useRouter();
+
+  const onSubmit = async (user) => {
+    setLoading(true);
+    const response = await login(user);
+    setLoading(false);
+
+    console.log(response);
+    
+
+    if (response) {
+      localStorage.setItem("absolute-cinema-access-token", response.accessToken);
+      router.push(`/successful-auth/login/${response.user._id}`)
+    }
+  };
 
   return (
     <AuthLayout>
@@ -35,7 +53,7 @@ export default function Page() {
         </div>
         <span className={styles.forgot__password}>Forgot Password?</span>
         <div className={styles.button}>
-          <AuthButton>LOGIN</AuthButton>
+          <AuthButton>{loading ? <span className="spinner"></span> : "LOGIN"}</AuthButton>
         </div>
       </form>
     </AuthLayout>
