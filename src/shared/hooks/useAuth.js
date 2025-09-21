@@ -12,7 +12,7 @@ const login = async (user) => {
   return data;
 };
 
-const register = async (user) => {
+const registerUser = async (user) => {
   const data = await request(
     "POST",
     `${BASE_URL}/api/v1/auth/register`,
@@ -30,4 +30,4 @@ const getCurrentUser = async (accessToken) => {
   return data;
 };
 
-export { login, register, getCurrentUser };
+export { login, registerUser, getCurrentUser };

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { login } from "@/shared/hooks/useAuth";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
@@ -18,17 +19,26 @@ export default function Page() {
   } = useForm();
   const router = useRouter();
 
+  const errorMessageNotify = (error) => toast.error(error);
+
   const onSubmit = async (user) => {
     setLoading(true);
     const response = await login(user);
     setLoading(false);
 
-    console.log(response);
-    
+    if (response === "Failed to fetch") {
+      errorMessageNotify("Внутреннея серверная ошибка! Попробуйте позже!");
+      return;
+    }
 
     if (response) {
-      localStorage.setItem("absolute-cinema-access-token", response.accessToken);
-      router.push(`/successful-auth/login/${response.user._id}`)
+      localStorage.setItem(
+        "absolute-cinema-access-token",
+        response.accessToken
+      );
+      router.push(`/successful-auth/login/${response.user._id}`);
+    } else {
+      errorMessageNotify("Данные не совпадают!");
     }
   };
 
@@ -53,9 +63,13 @@ export default function Page() {
         </div>
         <span className={styles.forgot__password}>Forgot Password?</span>
         <div className={styles.button}>
-          <AuthButton>{loading ? <span className="spinner"></span> : "LOGIN"}</AuthButton>
+          <AuthButton>
+            {loading ? <span className="spinner"></span> : "LOGIN"}
+          </AuthButton>
         </div>
       </form>
+
+      <Toaster />
     </AuthLayout>
   );
 }

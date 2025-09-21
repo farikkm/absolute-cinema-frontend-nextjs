@@ -10,12 +10,11 @@ export async function request(method, url, headers, body) {
     }
 
     const res = await fetch(url, options);
+    const resJson = await res.json();
 
     if (!res.ok) {
-      throw new Error("Что-то пошло не так! Попробуйте еще раз!")
+      return;
     }
-
-    const resJson = await res.json();
 
     if (!resJson.success) {
       return { message: resJson.message, data: resJson.data }
@@ -23,6 +22,9 @@ export async function request(method, url, headers, body) {
 
     return resJson.data;
   } catch (error) {
-    throw new Error("Internal server error!")
+    if (error.message) {
+      return error.message
+    }
+    console.error(error);
   }
 }

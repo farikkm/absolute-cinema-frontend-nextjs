@@ -13,6 +13,18 @@ export default function Page() {
   const [username, setUsername] = useState("");
   const [hasAccess, setHasAccess] = useState(null);
 
+  if (method === "register") {
+    setTimeout(() => router.push("/login"), 3000);
+    return (
+      <div className={styles.wrapper}>
+        <img src="/icons/successful-auth-user.png" alt="user-icon" />
+        <h1 className={styles.title}>
+          Your account is successfully created
+        </h1>
+      </div>
+    );
+  }
+
   useEffect(() => {
     if (!id) {
       return;
@@ -65,7 +77,9 @@ export default function Page() {
     <div className={styles.wrapper}>
       <img src="/icons/successful-auth-user.png" alt="user-icon" />
       <h3 className={styles.username}>{username}</h3>
-      <h1 className={styles.title}>You have successfully logged in</h1>
+      <h1 className={styles.title}>
+        You have successfully logged in
+      </h1>
     </div>
   );
 }
