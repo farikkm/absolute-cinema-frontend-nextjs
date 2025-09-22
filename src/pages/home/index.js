@@ -1,6 +1,6 @@
 // page.jsx
 import styles from "./home.module.css";
-import withAuth from "@/shared/libs/withAuth";
+import ProtectedPage from "@/features/user/ui/ProtectedPage";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -60,4 +60,4 @@ function Page() {
   );
 }
 
-export default withAuth(Page);
+export default ProtectedPage(Page);

@@ -34,14 +34,14 @@ export default function Page() {
     setLoading(false);
 
     if (response === "Failed to fetch") {
-      errorMessageNotify("Внутреннея серверная ошибка! Попробуйте позже!")
+      errorMessageNotify("Внутреннея серверная ошибка! Попробуйте позже!");
       return;
     }
-    
+
     if (response) {
       router.push(`/successful-auth/register/${response.user._id}`);
     } else {
-      errorMessageNotify("Пользователь с такими данными уже существует!")
+      errorMessageNotify("Пользователь с такими данными уже существует!");
     }
   };
 
@@ -92,9 +92,7 @@ export default function Page() {
         </div>
       </form>
 
-      <Toaster
-        position="top-center"
-      />
+      <Toaster position="top-center" />
     </AuthLayout>
   );
 }
