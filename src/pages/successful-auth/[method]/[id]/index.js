@@ -1,85 +1,37 @@
-import { LOCAL_STORAGE_ACCESS_TOKEN } from "@/shared/constants";
-import { getCurrentUser } from "@/shared/hooks/useAuth";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 import styles from "./successful-auth.module.css";
-import Link from "next/link";
+import ProtectedPage from "@/features/user/ui/ProtectedPage";
+import isAuth from "@/features/user/libs/isAuth";
 
-export default function Page() {
+function Page() {
   const router = useRouter();
-  const { method, id } = router.query;
+  const { method } = router.query;
 
-  const [username, setUsername] = useState("");
-  const [hasAccess, setHasAccess] = useState(null);
+  const { hasAccess, username } = isAuth()
+
+  if (!hasAccess) return;
 
   if (method === "register") {
     setTimeout(() => router.push("/login"), 3000);
     return (
       <div className={styles.wrapper}>
         <img src="/icons/successful-auth-user.png" alt="user-icon" />
-        <h1 className={styles.title}>
-          Your account is successfully created
-        </h1>
+        <h1 className={styles.title}>Your account is successfully created</h1>
       </div>
     );
   }
 
-  useEffect(() => {
-    if (!id) {
-      return;
-    }
-
-    async function fetchUser() {
-      const response = await getCurrentUser(
-        localStorage.getItem(LOCAL_STORAGE_ACCESS_TOKEN)
-      );
-
-      if (!response) {
-        setHasAccess(false);
-        return;
-      }
-
-      if (response.user._id !== id) {
-        setHasAccess(false);
-        return;
-      }
-
-      setUsername(response.user.username);
-      setHasAccess(true);
-
-      setTimeout(() => router.push("/home"), 3000);
-    }
-
-    fetchUser();
-  }, [id, router]);
-
-  if (hasAccess === null) {
+  if (method === "login") {
+    setTimeout(() => router.push("/home"), 3000);
     return (
       <div className={styles.wrapper}>
-        <span className={`spinner ${styles.spinner}`}></span>
+        <img src="/icons/successful-auth-user.png" alt="user-icon" />
+        <h3 className={styles.username}>{username}</h3>
+        <h1 className={styles.title}>You have successfully logged in</h1>
       </div>
     );
   }
-
-  if (hasAccess === false) {
-    return (
-      <div className={styles.wrapper}>
-        <h1 className={styles.title}>
-          You do not have permission to this page
-        </h1>
-        <Link href="/login">Go to login page</Link>
-      </div>
-    );
-  }
-
-  return (
-    <div className={styles.wrapper}>
-      <img src="/icons/successful-auth-user.png" alt="user-icon" />
-      <h3 className={styles.username}>{username}</h3>
-      <h1 className={styles.title}>
-        You have successfully logged in
-      </h1>
-    </div>
-  );
 }
+
+export default ProtectedPage(Page);

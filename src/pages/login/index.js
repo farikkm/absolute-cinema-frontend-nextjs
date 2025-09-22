@@ -4,10 +4,10 @@ import AuthLayout from "@/shared/ui/auth-layout";
 import AuthInput from "@/shared/ui/auth-input";
 import AuthButton from "@/shared/ui/auth-button";
 import { useForm } from "react-hook-form";
-import { login } from "@/shared/hooks/useAuth";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { login } from "@/features/user/api";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);

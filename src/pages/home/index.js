@@ -1,6 +1,5 @@
 // page.jsx
 import styles from "./home.module.css";
-import withAuth from "@/shared/libs/withAuth";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -8,6 +7,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import ProtectedPage from "@/features/user/ui/ProtectedPage";
 
 const slides = [
   { imgUrl: "/images/home/01.png" },
@@ -60,4 +60,4 @@ function Page() {
   );
 }
 
-export default withAuth(Page);
+export default ProtectedPage(Page);

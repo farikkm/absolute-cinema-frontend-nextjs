@@ -10,12 +10,11 @@ export async function request(method, url, headers, body) {
     }
 
     const res = await fetch(url, options);
-    const resJson = await res.json();
-
     if (!res.ok) {
       return;
     }
-
+    
+    const resJson = await res.json();
     if (!resJson.success) {
       return { message: resJson.message, data: resJson.data }
     }

@@ -1,5 +1,5 @@
-import { BASE_URL } from "../constants";
-import { request } from "../helpers/request";
+import { BASE_URL } from "@/shared/constants";
+import { request } from "@/shared/helpers/request";
 
 const login = async (user) => {
   const data = await request(
