@@ -1,8 +1,8 @@
 import { BASE_URL } from "@/shared/constants";
-import { request } from "@/shared/helpers/request";
+import { authRequest } from "@/shared/helpers/requests";
 
 const login = async (user) => {
-  const data = await request(
+  const data = await authRequest(
     "POST",
     `${BASE_URL}/api/v1/auth/login`,
     { "Content-Type": "application/json" },
@@ -13,7 +13,7 @@ const login = async (user) => {
 };
 
 const registerUser = async (user) => {
-  const data = await request(
+  const data = await authRequest(
     "POST",
     `${BASE_URL}/api/v1/auth/register`,
     { "Content-Type": "application/json" },
@@ -24,7 +24,7 @@ const registerUser = async (user) => {
 };
 
 const getCurrentUser = async (accessToken, controller) => {
-  const data = await request(
+  const data = await authRequest(
     "GET",
     `${BASE_URL}/api/v1/auth/current-user`,
     {

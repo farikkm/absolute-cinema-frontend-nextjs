@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 
 import styles from "./successful-auth.module.css";
-import ProtectedPage from "@/features/user/ui/ProtectedPage";
-import isAuth from "@/features/user/libs/isAuth";
+import ProtectedPage from "@/features/auth/ui/ProtectedPage";
+import isAuth from "@/features/auth/libs/isAuth";
 
 function Page() {
   const router = useRouter();

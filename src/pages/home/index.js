@@ -1,6 +1,6 @@
 // page.jsx
 import styles from "./home.module.css";
-import ProtectedPage from "@/features/user/ui/ProtectedPage";
+import ProtectedPage from "@/features/auth/ui/ProtectedPage";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
