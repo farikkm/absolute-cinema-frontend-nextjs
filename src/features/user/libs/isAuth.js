@@ -12,6 +12,13 @@ export default function isAuth() {
   const { id } = router.query;
 
   useEffect(() => {
+    const controller = new AbortController();
+
+    const timeoutId = setTimeout(() => {
+      controller.abort();
+      router.push("/login");
+    }, 10 * 1000);
+
     async function fetchUser() {
       setLoading(true);
 
@@ -22,9 +29,12 @@ export default function isAuth() {
         return;
       }
 
-      const response = await getCurrentUser(accessToken);
+      const response = await getCurrentUser(accessToken, {
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
 
-      if (!response.user) {
+      if (!response?.user) {
         setHasAccess(false);
         setLoading(false);
         return;
@@ -42,6 +52,8 @@ export default function isAuth() {
     }
 
     fetchUser();
+
+    return () => clearTimeout(timeoutId);
   }, [id]);
 
   return { loading, hasAccess, username };

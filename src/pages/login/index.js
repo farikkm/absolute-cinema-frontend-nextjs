@@ -26,8 +26,6 @@ export default function Page() {
     const response = await login(user);
     setLoading(false);
 
-    console.log(response);
-
     if (response === "Failed to fetch") {
       errorMessageNotify("Внутреннея серверная ошибка! Попробуйте позже!");
       return;

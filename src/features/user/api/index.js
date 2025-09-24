@@ -23,10 +23,16 @@ const registerUser = async (user) => {
   return data;
 };
 
-const getCurrentUser = async (accessToken) => {
-  const data = await request("GET", `${BASE_URL}/api/v1/auth/current-user`, {
-    Authorization: `Bearer ${accessToken}`,
-  });
+const getCurrentUser = async (accessToken, controller) => {
+  const data = await request(
+    "GET",
+    `${BASE_URL}/api/v1/auth/current-user`,
+    {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    {},
+    controller
+  );
   return data;
 };
 

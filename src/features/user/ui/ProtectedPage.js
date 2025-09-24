@@ -6,8 +6,6 @@ export default function ProtectedPage(Component) {
   return function (props) {
     const { loading, hasAccess } = isAuth();
 
-    console.log(hasAccess);
-
     if (loading) return <LoadingPage />;
     if (!hasAccess) return <HasNotAccessPage />;
 
