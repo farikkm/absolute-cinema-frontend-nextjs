@@ -9,7 +9,7 @@ export default function isAuth() {
   const [hasAccess, setHasAccess] = useState(false);
 
   const router = useRouter();
-  const { id } = router.query;
+  const { id, method } = router.query;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -51,7 +51,12 @@ export default function isAuth() {
       setLoading(false);
     }
 
-    fetchUser();
+    if (method && method === "register") {
+      setHasAccess(true);
+      setLoading(false);
+    } else {
+      fetchUser();
+    }
 
     return () => clearTimeout(timeoutId);
   }, [id]);
