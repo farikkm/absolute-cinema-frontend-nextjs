@@ -88,6 +88,46 @@ ul {
   mask-size: 100% 100%;
 }
 
+.section-start {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.section-start > h2 {
+  font-size: var(--heading-2);
+}
+
+.section-start > a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  font-weight: 700;
+
+  color: var(--blue-color);
+}
+
+.section-start > a::after {
+  content: "";
+  width: 16px;
+  height: 18px;
+  background-image: url("/icons/arrow-right.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  object-fit: contain;
+  transform: translate(0px, 0px);
+  transition: transform 0.2s ease-in-out;
+}
+
+.section-start > a:hover::after {
+  transform: translate(3px, 0px);
+}
+
 @keyframes spin {
   100% {
     transform: rotate(360deg);

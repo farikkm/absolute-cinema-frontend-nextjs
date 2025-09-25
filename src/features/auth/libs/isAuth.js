@@ -17,7 +17,7 @@ export default function isAuth() {
     const timeoutId = setTimeout(() => {
       controller.abort();
       router.push("/login");
-    }, 10 * 1000);
+    }, 10 * 3000);
 
     async function fetchUser() {
       setLoading(true);

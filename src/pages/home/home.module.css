@@ -114,3 +114,7 @@
 .slide__active::after {
   background-color: transparent;
 }
+
+.trends {
+  margin-top: 35px;
+}
