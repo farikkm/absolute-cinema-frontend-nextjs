@@ -1,3 +1,5 @@
+import { TMDB_BASE_URL } from "../constants";
+
 export async function authRequest(method, url, headers, body, controller) {
   try {
     const options = {
@@ -37,13 +39,12 @@ export async function authRequest(method, url, headers, body, controller) {
 }
 
 export async function tmdbRequest(params) {
-  const url = "https://api.themoviedb.org/3" + params;
+  const url = TMDB_BASE_URL + params;
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNmQ2MDM4YWRlZjE5NjgzOTFmMzlkYjNmYzBkNDJmYiIsIm5iZiI6MTY4Mjg2NDM2Mi42OCwic3ViIjoiNjQ0ZTc4ZWE5YWZmYzAxZmZlZGY5OTM3Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.rCJgNLBydPPFkhQHG7RGg9y2khXmzTHZ1ahH2MF_rzM",
+      Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
     },
   };
 
