@@ -4,6 +4,7 @@ import "swiper/css";
 import MovieItem from "@/shared/ui/movie-item";
 
 import styles from "./main-slider.module.css";
+import MovieFilter from "../movie-filter";
 
 export default function MainSlider({ list }) {
   return (
@@ -15,8 +16,6 @@ export default function MainSlider({ list }) {
           slidesPerView: 5,
         },
       }}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
       className={styles.wrapper}
     >
       {list.map((item, index) => (

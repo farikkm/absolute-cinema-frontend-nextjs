@@ -14,29 +14,123 @@ import { useEffect, useState } from "react";
 import Header from "@/widgets/header";
 import MovieItem from "@/shared/ui/movie-item";
 import MainSlider from "@/widgets/main-slider";
+import MovieFilter from "@/widgets/movie-filter";
 
 function Page() {
   const initialIndex = 10;
 
+  // Movies
   const [nowPlaying, setNowPlaying] = useState([]);
+  const [moviesList, setMoviesList] = useState([]);
+
+  // Active Items
   const [activeBanner, setActiveBanner] = useState("");
   const [activeMovie, setActiveMovie] = useState(null);
 
-  useEffect(() => {
-    async function fetchNowPlaying() {
-      const data = await tmdbRequest(
-        "/movie/now_playing?language=en-US&page=1"
-      );
-      setNowPlaying(data.results);
-      setActiveBanner(
-        "https://image.tmdb.org/t/p/w1280" +
-          data.results[initialIndex].backdrop_path
-      );
-      setActiveMovie(data.results[initialIndex]);
+  // Options
+  const [moviesFilterOptions, setMoviesFilterOptions] = useState([
+    {
+      label: "Drama",
+      checked: false,
+      filterId: 18,
+    },
+    {
+      label: "Action",
+      checked: false,
+      filterId: 28,
+    },
+    {
+      label: "Adventure",
+      checked: false,
+      filterId: 12,
+    },
+    {
+      label: "Romance",
+      checked: false,
+      filterId: 10749,
+    },
+    {
+      label: "Fantasy",
+      checked: false,
+      filterId: 14,
+    },
+    {
+      label: "Comedy",
+      checked: false,
+      filterId: 35,
+    },
+    {
+      label: "Animation",
+      checked: false,
+      filterId: 16,
+    },
+    {
+      label: "Thriller",
+      checked: false,
+      filterId: 53,
+    },
+    {
+      label: "Mystery",
+      checked: false,
+      filterId: 9648,
+    },
+    {
+      label: "Historical",
+      checked: false,
+      filterId: 36,
+    },
+  ]);
+
+  // Functions
+  const updateArrayByKey = (array, key, keyValue, changes) => {
+    return array.map((item) =>
+      item[key] === keyValue ? { ...item, ...changes } : item
+    );
+  };
+
+  const changeFilterState = (optionLabel, newOption) => {
+    setMoviesFilterOptions((prev) =>
+      updateArrayByKey(prev, "label", optionLabel, { checked: newOption })
+    );
+  };
+
+  async function fetchNowPlaying() {
+    const data = await tmdbRequest("/movie/now_playing?language=en-US&page=1");
+    setNowPlaying(data.results);
+    setActiveBanner(
+      "https://image.tmdb.org/t/p/w1280" +
+        data.results[initialIndex].backdrop_path
+    );
+    setActiveMovie(data.results[initialIndex]);
+  }
+
+  async function fetchMoviesList(genres) {
+    if (!genres) {
+      const data = await tmdbRequest("/discover/movie?language=ru-RU");
+      setMoviesList(data.results);
+      return;
     }
 
+    let genresIds = genres.join("|");
+    const data = await tmdbRequest(
+      `/discover/movie?language=ru-RU&with_genres=${genresIds}`
+    );
+    setMoviesList(data.results);
+  }
+
+  // Hooks
+  useEffect(() => {
     fetchNowPlaying();
+    fetchMoviesList();
   }, []);
+
+  useEffect(() => {
+    const genres = moviesFilterOptions
+      .filter((option) => option.checked)
+      .map((option) => option.filterId);
+
+    fetchMoviesList(genres);
+  }, [moviesFilterOptions]);
 
   return (
     <div className={styles.wrapper}>
@@ -106,6 +200,25 @@ function Page() {
           </div>
 
           {nowPlaying.length > 0 && <MainSlider list={nowPlaying} />}
+        </div>
+      </section>
+
+      <section className={styles.trends}>
+        <div className="container">
+          <div className="section-start">
+            <h2 className={styles.trends__title}>Movies</h2>
+            <a href="#">See more</a>
+          </div>
+
+          {moviesList.length > 0 && (
+            <>
+              <MovieFilter
+                options={moviesFilterOptions}
+                changeFilterState={changeFilterState}
+              />
+              <MainSlider list={moviesList} />
+            </>
+          )}
         </div>
       </section>
     </div>

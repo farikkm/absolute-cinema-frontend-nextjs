@@ -1,0 +1,19 @@
+.slider {
+  margin-bottom: 30px;
+}
+
+.fitler__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 28px;
+  border: 2px solid var(--pink-color);
+  border-radius: 25px;
+
+  cursor: pointer;
+}
+
+.checked {
+  background-color: var(--pink-color);
+}
