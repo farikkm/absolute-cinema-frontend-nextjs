@@ -7,7 +7,7 @@ import AuthButton from "@/shared/ui/auth-button";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import toast, { Toaster } from "react-hot-toast";
-import { registerUser } from "@/features/user/api";
+import { registerUser } from "@/features/auth/api";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);

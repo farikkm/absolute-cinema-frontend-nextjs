@@ -1,0 +1,8 @@
+.slider {
+  margin-top: 20px;
+  cursor: grab;
+}
+
+.slider:active {
+  cursor: grabbing;
+}

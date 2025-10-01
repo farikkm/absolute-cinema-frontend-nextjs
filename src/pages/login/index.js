@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { login } from "@/features/user/api";
+import { login } from "@/features/auth/api";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
